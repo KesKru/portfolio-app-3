@@ -2,21 +2,27 @@
 
 const express = require('express'); // include express module
 const bodyParser = require('body-parser'); // parsing incoming express
+const passport = require('passport');
 const cors = require('cors');
 const app = express(); // create an express instance
+// Routes
+const routes = require('./routes/index');
 
 //-----------------------Config-----------------------//
+
+// Database
+require('./config/databaseConfig'); // load and run db config
+require('./config/passportConfig'); // load passport config
 
 // Middleware
 app.use(cors()); // Alow Cross-origin resource sharing
 app.use(bodyParser.urlencoded({ extended: false })); // parse form data
 app.use(bodyParser.json()); // parse json data
-
-// Database
-require('./config/databaseConfig'); // load db config and connect to it
+app.use(passport.initialize());
 
 // Routes
-app.get('/', (req, res) => res.send('Hello World!'));
+app.use(routes);
+app.get('*', (req, res) => res.send('No such route.'));
 
 //-----------------------Start server-----------------------//
 
