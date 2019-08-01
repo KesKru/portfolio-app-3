@@ -1,17 +1,1 @@
-# portfolio-app-3
-
-This will be AirBnb style app.
-
-## Spec
-
-### Functional spec
-
-...
-
-### Design spec
-
-...
-
-### Technical spec
-
-...
+This is a full-stack, AirBnB style Porogresive web application (PWA), with simplified functionality. It will demonstrate working knowledge of React(Hooks)-ContextAPI-VanillaCSS-Next + Node-Express-Apollo-MongoDB technology stack.

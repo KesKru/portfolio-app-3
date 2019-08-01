@@ -1,6 +1,6 @@
-# Portfolio-app-spec
+# App-3-spec
 
-A short overview of Functional, Design and Technical specifications for this app. This is a full stack AirBnB style application, with simplified functionality,- to demonstrate working knowledge of React(Hooks)-ContextAPI-VanillaCSS-Next + Node-Express-Apollo-MongoDB technology stack.
+A short overview of Functional, Design and Technical specifications for this app.
 
 ## Functional spec:
 
