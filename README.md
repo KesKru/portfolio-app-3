@@ -1,1 +1,1 @@
-This is a full-stack, AirBnB style Porogresive web application (PWA), with simplified functionality. It will demonstrate working knowledge of React(Hooks)-ContextAPI-VanillaCSS-Next + Node-Express-Apollo-MongoDB technology stack.
+This is a full-stack, Universal(Isomorphic) application built to demonstrate working knowledge of React(Hooks)-ContextAPI-VanillaCSS-Next front-end + Node-Express-Apollo-MongoDB back-end technology stack.

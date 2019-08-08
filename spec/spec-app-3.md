@@ -1,10 +1,23 @@
 # App-3-spec
 
-A short overview of Functional, Design and Technical specifications for this app.
+Context:
+This is a full-stack, Universal(Isomorphic) application built to demonstrate working knowledge of React(Hooks)-ContextAPI-VanillaCSS-Next front-end + Node-Express-Apollo-MongoDB back-end technology stack.
+The project will be holiday rentals booking app,- allowing the user to post/rent properties various properties. It will feature register/login functionality, private messaging between users, integrated payments, review/comment functionality. The properties will be listed on an interactive map, which will also be integrated with the search functionality.
 
 ## Functional spec:
 
-TBD
+Functionality:
+
+- User register/login/update functionality.
+- Personalized home pages for logged in users.
+- Protected private pages functionality.
+- Private messaging functionality.
+- Property Post/Rent functionality.
+- Review/Comment functionality.
+- On-map listing display
+- Property search.
+- Payments functionality.
+- Responsive/Animated front-end design.
 
 ## Design spec:
 
