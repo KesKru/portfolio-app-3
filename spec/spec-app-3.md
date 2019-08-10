@@ -19,19 +19,31 @@ Functionality:
 - Payments functionality.
 - Responsive/Animated front-end design.
 
+Site pages and their functions:
+
+```sh
+Home                # Landing page/map view/search
+|
+|- Register/login   # Register/login functionality
+|
+|- User info*       # User account info/updates
+|
+|- User messages*   # User messages page
+|
+|- Bookings*        # User bookings and payments
+|
+|- Reviews          # Reviews
+|
+|- About/Contacts   # Information about the company/contacts
+|
+|- .....
+
+* - These pages are private and require user login.
+```
+
 ## Design spec:
 
 TDB
-
-<!-- Color scheme and font:
-
-Pages and their design:
-
-- Landing
-- Login/Register
-- ...
-
-![alt text](./img/landing.png 'Logo Title Text 1') -->
 
 ## Technical spec:
 
