@@ -1,26 +1,58 @@
 const passport = require('passport');
 const jwt = require('jsonwebtoken');
 const JwtStrategy = require('passport-jwt').Strategy;
-ExtractJwt = require('passport-jwt').ExtractJwt;
-const md = require('../models/index');
+const ExtractJwt = require('passport-jwt').ExtractJwt;
+const LocalStrategy = require('passport-local').Strategy;
+const User = require('../models/User');
 
-var opts = {};
-opts.jwtFromRequest = ExtractJwt.fromAuthHeaderAsBearerToken();
-opts.secretOrKey = 'secret123';
-
-passport.use(
-  new JwtStrategy(opts, function(jwt_payload, done) {
-    console.log(jwt_payload);
-
-    User.findOne({ id: jwt_payload._id }, (err, user) => {
-      if (err) {
-        return done(err, false);
+module.exports = () => {
+  passport.use(
+    new LocalStrategy(
+      {
+        usernameField: 'user[email]',
+        passwordField: 'user[password]'
+      },
+      function(email, password, done) {
+        User.findOne({ email: email }, function(err, user) {
+          // console.log(req);
+          if (err) {
+            return done(err);
+          }
+          if (!user) {
+            return done(null, false, {
+              message: 'User with this email does not exist.'
+            });
+          }
+          user.comparePassword(password).then((match) => {
+            if (match) {
+              return done(null, user);
+            } else {
+              return done(null, false, { message: 'Incorrect password.' });
+            }
+          });
+        });
       }
-      if (user) {
-        return done(null, user);
-      } else {
-        return done(null, false);
+    )
+  );
+
+  passport.use(
+    new JwtStrategy(
+      {
+        jwtFromRequest: ExtractJwt.fromAuthHeaderAsBearerToken(),
+        secretOrKey: process.env.JWT_SECRET
+      },
+      function(jwt_payload, done) {
+        User.findOne({ id: jwt_payload._id }, (err, user) => {
+          if (err) {
+            return done(err, false);
+          }
+          if (user) {
+            return done(null, user);
+          } else {
+            return done(null, false);
+          }
+        });
       }
-    });
-  })
-);
+    )
+  );
+};

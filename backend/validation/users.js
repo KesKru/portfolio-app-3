@@ -7,13 +7,13 @@ const { body, validationResult } = require('express-validator/check');
 // This get pased into a route handler as a middleware
 
 module.exports.validateInputs = [
-  body('name')
+  body('user.username')
     .exists()
     .withMessage('name field does not exist')
     .not()
     .isEmpty()
     .withMessage('name field is empty'),
-  body('email')
+  body('user.email')
     .exists()
     .withMessage('email field does not exist')
     .not()
@@ -21,7 +21,7 @@ module.exports.validateInputs = [
     .withMessage('email field is empty')
     .isEmail()
     .withMessage('invalid email adress'),
-  body('password')
+  body('user.password')
     .exists()
     .withMessage('password field does not exist')
     .not()

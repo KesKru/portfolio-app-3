@@ -1,28 +1,25 @@
-//-----------------------Modules-----------------------//
-
+//-----------------------Imports-----------------------//
+require('dotenv').config();
 const express = require('express'); // include express module
-const bodyParser = require('body-parser'); // parsing incoming express
-const passport = require('passport');
-const cors = require('cors');
 const app = express(); // create an express instance
-// Routes
-const routes = require('./routes/index');
+const cors = require('cors');
+const passport = require('passport');
+// Models
 
 //-----------------------Config-----------------------//
 
 // Database
-require('./config/databaseConfig'); // load and run db config
-require('./config/passportConfig'); // load passport config
-
-// Middleware
+require('./config/databaseConfig')(); // load db config, connect to it, test connection
+// Middleware / Configs
 app.use(cors()); // Alow Cross-origin resource sharing
-app.use(bodyParser.urlencoded({ extended: false })); // parse form data
-app.use(bodyParser.json()); // parse json data
+app.use(express.urlencoded({ extended: true })); // parse form data
+app.use(express.json()); // parse json data
 app.use(passport.initialize());
+require('./config/passportConfig')(); //passport config
 
 // Routes
-app.use(routes);
-app.get('*', (req, res) => res.send('No such route.'));
+app.use(require('./routes/index'));
+app.get('*', (req, res) => res.json('Route does not exist :('));
 
 //-----------------------Start server-----------------------//
 
